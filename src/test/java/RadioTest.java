@@ -7,7 +7,7 @@ public class RadioTest {
     @Test
     public void currentStationNumber() {
 
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
         radio.setCurrentStation(5);
 
         assertEquals(5, radio.getCurrentStation());
@@ -15,7 +15,7 @@ public class RadioTest {
 
     @Test
     public void next() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
         radio.setCurrentStation(10);
 
         radio.next();
@@ -24,7 +24,7 @@ public class RadioTest {
 
     @Test
     public void next1() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
         radio.setCurrentStation(1);
 
         radio.next();
@@ -33,16 +33,16 @@ public class RadioTest {
 
     @Test
     public void prev() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
         radio.setCurrentStation(0);
 
         radio.prev();
-        assertEquals(10, radio.getCurrentStation());
+        assertEquals(9, radio.getCurrentStation());
     }
 
     @Test
     public void prev2() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
         radio.setCurrentStation(9);
 
         radio.prev();
@@ -50,8 +50,28 @@ public class RadioTest {
     }
 
     @Test
+
+    public void getMaxStation() {
+        Radio radio = new Radio(0, 9);
+        radio.setCurrentStation(9);
+
+        radio.getMaxStation();
+        assertEquals(9, radio.getCurrentStation());
+    }
+
+    @Test
+
+    public void getminStation() {
+        Radio radio = new Radio(0, 9);
+        radio.setCurrentStation(0);
+
+        radio.getMinStation();
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
     public void currentVolume() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
         radio.setCurrentVolume(10);
 
         int expected = 10;
@@ -63,7 +83,7 @@ public class RadioTest {
 
     @Test
     public void shouldGetMinVolume() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
         radio.setCurrentVolume(10);
 
         assertEquals(10, radio.getCurrentVolume());
@@ -71,7 +91,7 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetCurrentVolumeAboveMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
 
         radio.setCurrentVolume(-1);
 
@@ -82,7 +102,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetCurrentVolume() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
 
         radio.setCurrentVolume(6);
 
@@ -93,7 +113,7 @@ public class RadioTest {
 
     @Test
     public void increaseVolume() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
 
         radio.setCurrentVolume(100);
         radio.increaseVolume();
@@ -103,7 +123,7 @@ public class RadioTest {
 
     @Test
     public void increaseVolume2() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
 
         radio.setCurrentVolume(8);
         radio.increaseVolume();
@@ -113,7 +133,7 @@ public class RadioTest {
 
     @Test
     public void ShouldSetPrevVolume() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(0, 9);
 
         radio.setCurrentVolume(6);
         radio.prevVolume();
